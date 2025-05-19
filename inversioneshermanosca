@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inversiones Hermanos C.A.</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdf6ec;
+      color: #333;
+    }
+    header {
+      background: #e63946;
+      color: white;
+      padding: 1.5em;
+      text-align: center;
+    }
+    nav {
+      background: #ffca28;
+      padding: 1em;
+      text-align: center;
+      font-weight: bold;
+    }
+    .container {
+      padding: 2em;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .product {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product-details {
+      flex-grow: 1;
+    }
+    .product-price {
+      font-weight: bold;
+      color: #e63946;
+    }
+    .product button {
+      padding: 0.5em 1em;
+      background: #e63946;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .product button:hover {
+      background: #c62828;
+    }
+    form {
+      margin-top: 2em;
+      padding: 1em;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.5em;
+      margin: 0.5em 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background: #e63946;
+      color: white;
+      padding: 0.7em 1.5em;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    form button:hover {
+      background: #c62828;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+    }
+    .contact, .hours {
+      margin-top: 2em;
+    }
+    .servicio-cliente {
+      margin-top: 3em;
+      text-align: center;
+    }
+    .servicio-cliente img {
+      width: 250px;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Inversiones Hermanos C.A.</h1>
+  </header>
+
+  <nav>
+    Pedidos al WhatsApp: +58 412-1234567 &nbsp; | &nbsp; Horario: Lun a Sáb - 8:00 am a 6:00 pm
+  </nav>
+
+  <div class="container">
+    <h2>Productos Disponibles</h2>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100?text=Arroz" alt="Arroz" />
+      <div class="product-details">
+        <span>Arroz 1kg</span><br />
+        <span class="product-price">Bs. 120.000 / $1.20</span>
+      </div>
+      <button onclick="agregarProducto('Arroz 1kg')">Agregar al pedido</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100?text=Pollo" alt="Pollo" />
+      <div class="product-details">
+        <span>Pollo preparado (porción)</span><br />
+        <span class="product-price">Bs. 350.000 / $3.50</span>
+      </div>
+      <button onclick="agregarProducto('Pollo preparado')">Agregar al pedido</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100?text=Harina" alt="Harina" />
+      <div class="product-details">
+        <span>Harina 1kg</span><br />
+        <span class="product-price">Bs. 100.000 / $1.00</span>
+      </div>
+      <button onclick="agregarProducto('Harina 1kg')">Agregar al pedido</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100?text=Empanada" alt="Empanadas" />
+      <div class="product-details">
+        <span>Empanadas (unidad)</span><br />
+        <span class="product-price">Bs. 150.000 / $1.50</span>
+      </div>
+      <button onclick="agregarProducto('Empanadas')">Agregar al pedido</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100?text=Huevos" alt="Huevos" />
+      <div class="product-details">
+        <span>Huevos (docena)</span><br />
+        <span class="product-price">Bs. 200.000 / $2.00</span>
+      </div>
+      <button onclick="agregarProducto('Huevos')">Agregar al pedido</button>
+    </div>
+
+    <form id="pedidoForm" onsubmit="enviarPedido(); return false;">
+      <h3>Formulario de Pedido</h3>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" required />
+
+      <label for="productos">Productos seleccionados:</label>
+      <textarea id="productos" rows="4" readonly></textarea>
+
+      <button type="submit">Enviar pedido por WhatsApp</button>
+    </form>
+
+    <div class="contact">
+      <h3>Contacto</h3>
+      <p>Teléfono/WhatsApp: +58 412-1234567</p>
+      <p>Email: contacto@mitienda.com.ve</p>
+    </div>
+
+    <div class="hours">
+      <h3>Horario de Atención</h3>
+      <p>Lunes a Sábado: 8:00 am - 6:00 pm</p>
+      <p>Domingos: Cerrado</p>
+    </div>
+
+    <div class="servicio-cliente">
+      <h3>¡Atención al Cliente con Amabilidad!</h3>
+      <img src="https://images.unsplash.com/photo-1600195077073-38b9c832c4e8?auto=format&fit=crop&w=600&q=80" alt="Trabajador atendiendo amablemente" />
+      <p>Nos esforzamos en ofrecerte la mejor atención, con una sonrisa y disposición para ayudarte siempre.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Inversiones Hermanos C.A. - Todos los derechos reservados
+  </footer>
+
+  <script>
+    function agregarProducto(nombre) {
+      const textarea = document.getElementById('productos');
+      textarea.value += nombre + "\n";
+    }
+
+    function enviarPedido() {
+      const nombre = document.getElementById('nombre').value;
+      const telefono = document.getElementById('telefono').value;
+      const productos = document.getElementById('productos').value;
+
+      const mensaje = `Hola, mi nombre es ${nombre}. Mi número es ${telefono}. Quiero pedir:\n${productos}`;
+      const whatsappURL = `https://wa.me/584121234567?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</body>
+</html>
